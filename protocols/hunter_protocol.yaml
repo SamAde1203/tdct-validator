@@ -1,0 +1,85 @@
+# HUNTER – Hunteria umbellata New Therapeutic Evaluation for Remission
+# Simplified illustrative protocol YAML for TDCT
+
+trial_id: HSE-T2D-001
+name: "Hunteria umbellata New Therapeutic Evaluation for Remission (HUNTER)"
+indication: "Type 2 diabetes (early, treatment-naive)"
+sample_size: 60
+
+population:
+  age_min: 30
+  age_max: 60
+  treatment_naive: true
+  # NOTE: missing treatment_naive_definition on purpose (ELG-NAIVE will fire)
+
+eligibility:
+  inclusions:
+    - diagnosed_t2d_12m
+    - hba1c_7_to_9
+  exclusions:
+    # NOTE: deliberately no severe_hypoglycemia_12m or 24m (SAF-HYPO will fire)
+    - recent_mi_6m
+    - recent_stroke_6m
+    - ckd_stage_3a      # to trigger generalisability MINOR finding
+  gfr_band:
+    min: 30
+    max: 59
+  creatinine_max_mg_dl: 1.5
+
+intervention:
+  investigational_product: "HSE-01"
+  is_first_in_human: true
+  glucose_lowering: true
+  mechanism: "Glucose-lowering botanical; partial CYP3A4 metabolism"
+  doses_mg:
+    - 500
+    - 1000
+    - 1500
+  hed_toxicity_threshold_mg: 1134   # from chronic rat LOAEL HED
+  # NOTE: no titration_schedule (SAF-FIH will fire)
+  # titration_schedule:
+  #   start_dose_mg: 500
+  #   titration_weeks: 2
+
+endpoints:
+  primary: "HbA1c change at week 12"    # intentionally misaligned with power statement
+  secondary:
+    - "Safety and tolerability"
+    - "Fasting plasma glucose"
+  exploratory:
+    - "Continuous glucose monitoring metrics"
+  all:
+    - "HbA1c"
+    - "Safety and tolerability"
+    - "Fasting plasma glucose"
+  timepoints_weeks:
+    hba1c: 12         # <16 weeks -> END-HBA1C will fire
+
+measurement:
+  bp:
+    method: null      # not central for this trial; BP validator will likely not run
+  biomarkers:
+    - name: "ALT"
+      assay_method: null          # missing -> MEA-BIOM will fire
+      laboratory_standard: null
+
+lifestyle:
+  manual_reference: "Appendix B: Lifestyle Intervention Manual"  # but not in appendices
+
+appendices:
+  - "Appendix A: Hypoglycaemia Management Plan"
+  # NOTE: Appendix B missing -> MEA-LIFE will fire
+
+statistics:
+  powered_for: null
+  claims_not_powered_for_efficacy: true
+  subgroup_analyses:
+    - "prior_treatment_status"
+  subgroup_power: {}
+  adaptive_language: false
+
+regulatory:
+  declared_phase: "Phase III"     # intentionally wrong
+  inferred_phase: "Phase Ib/IIa"  # REG-PHASE will fire
+
+substudies: {}
