@@ -1,0 +1,53 @@
+# example_input.yaml
+# Minimal example protocol for TDCT demonstration
+
+meta:
+  trial_id: "DEMO-001"
+  title: "Example Pilot Study"
+  acronym: "DEMO"
+  phase: "I"
+  indication: "Hypertension"
+
+population:
+  age_min: 40
+  age_max: 75
+  sex: "all"
+
+eligibility:
+  inclusion:
+    - "Diagnosed hypertension"
+  exclusion:
+    - "Severe hypoglycaemia within past 24 months"   # correct safety exclusion
+
+intervention:
+  arms:
+    - arm_id: "A"
+      name: "Investigational Drug"
+      type: "active"
+      route: "oral"
+      doses:
+        - level_id: 1
+          dose: "20 mg"
+          frequency: "once_daily"
+      glucose_lowering: false
+
+endpoints:
+  primary:
+    name: "Blood pressure reduction"
+    type: "efficacy"
+    timepoint: "12 weeks"
+
+measurement:
+  bp_measurement:
+    specified: false            # Triggers SPRINT-style validator
+    method: null                # Missing measurement details
+
+safety:
+  dmc_required: true
+  stopping_rules:
+    trial_level:
+      - "Any drug-related death"
+
+metadata_tdct:
+  created_by: "Sam Adeyemi"
+  created_on: "2025-05-01"
