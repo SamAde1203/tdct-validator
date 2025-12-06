@@ -104,6 +104,14 @@ class HypoglycemiaRiskValidator(BaseValidator):
                 predicted_outcome="High risk of mortality in elderly on glucose-lowering therapy."
             )
 
+
+import json
+
+with open("findings/hunter_findings.json") as f:
+    hunter = json.load(f)
+print(hunter["total_findings"], hunter["severity_counts"])
+
+
 Contributing
 
 Contributions are welcome, including:
