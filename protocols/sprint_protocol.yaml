@@ -1,0 +1,79 @@
+# SPRINT – Systolic Blood Pressure Intervention Trial
+# Simplified illustrative protocol YAML for TDCT
+
+trial_id: NCT01206062
+name: "Systolic Blood Pressure Intervention Trial (SPRINT)"
+indication: "Hypertension in non-diabetic adults ≥50 years"
+sample_size: 9361
+
+population:
+  age_min: 50
+  age_max: 80
+  treatment_naive: false
+
+eligibility:
+  inclusions:
+    - sbp_130_to_180
+    - additional_cvd_risk
+  exclusions:
+    - diabetes_mellitus
+    - same_household_randomised    # triggers ELG-HH (household bias)
+    - recent_stroke_6m
+
+intervention:
+  investigational_product: "Intensive (<120 mmHg) vs standard (<140 mmHg) SBP target"
+  is_first_in_human: false
+  glucose_lowering: false
+  intensive_target: true
+  mechanism: "Antihypertensive regimen optimisation"
+
+endpoints:
+  primary: "Composite CVD event"
+  secondary:
+    - "All-cause mortality"
+    - "Heart failure hospitalisation"
+  exploratory:
+    - "Cognitive outcomes (SPRINT-MIND)"
+  all:
+    - "Systolic blood pressure"
+    - "Composite CVD event"
+    - "Cognitive outcome"
+  timepoints_weeks:
+    hba1c: null
+
+measurement:
+  bp:
+    method: "standardised_protocol"    # vague on purpose
+    unattended: null                   # not stated
+    rest_minutes: 3                    # <5, will trigger minor finding
+  biomarkers:
+    - name: "Serum creatinine"
+      assay_method: "Enzymatic assay"
+      laboratory_standard: "Core laboratory"
+
+lifestyle:
+  manual_reference: null
+
+appendices:
+  - "Appendix A: BP Device Calibration Manual"
+
+statistics:
+  powered_for: "Composite CVD event"
+  claims_not_powered_for_efficacy: false
+  subgroup_analyses:
+    - "ckd_status"
+    - "age_75_plus"
+  subgroup_power:
+    ckd_status:
+      power: 0.8
+  adaptive_language: true
+  adaptive_rules: null     # triggers END-ADAPT minor finding
+
+regulatory:
+  declared_phase: "Phase III"
+  inferred_phase: "Phase III"
+
+substudies:
+  SPRINT_MIND:
+    requires_additional_consent: true
+    consent_process_defined: false   # triggers REG-CONSENT
