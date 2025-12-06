@@ -1,0 +1,10 @@
+PyYAML>=6.0
+jsonschema>=4.0.1
+pydantic>=2.0
+rich>=13.0
+click>=8.1
+
+# Optional packages for NLP or text extraction (commented out)
+# nltk>=3.8
+# spacy>=3.7
+# transformers>=4.40
