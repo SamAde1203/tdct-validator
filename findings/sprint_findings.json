@@ -1,0 +1,74 @@
+{
+  "trial_id": "SPRINT",
+  "total_findings": 7,
+  "severity_counts": {
+    "MAJOR": 5,
+    "CRITICAL": 1,
+    "MINOR": 1
+  },
+  "findings": [
+    {
+      "id": "SPRINT-001",
+      "section": "Eligibility – Household",
+      "type": "Same-household exclusion creates recruitment bias",
+      "severity": "MAJOR",
+      "description": "Exclusion of individuals living in the same household as an enrolled participant may reduce representativeness and introduce subtle socio-demographic bias.",
+      "recommendation": "Reconsider same-household exclusion or provide strong justification; monitor for recruitment imbalances by socioeconomic status.",
+      "actual_outcome": "Impact on generalisability is uncertain but may have reduced inclusion of certain household structures."
+    },
+    {
+      "id": "SPRINT-002",
+      "section": "Eligibility – Diabetes",
+      "type": "Diabetes exclusion limits generalizability to real-world hypertension population",
+      "severity": "MAJOR",
+      "description": "Exclusion of participants with diabetes produces a cleaner pathophysiological sample but limits applicability to the large proportion of hypertensive patients with coexisting diabetes.",
+      "recommendation": "Explicitly position trial as non-diabetic high-risk hypertension population; plan complementary studies including diabetes.",
+      "actual_outcome": "SPRINT results cannot be directly extrapolated to patients with both diabetes and hypertension."
+    },
+    {
+      "id": "SPRINT-003",
+      "section": "Measurement – Blood Pressure",
+      "type": "BP measurement standardization insufficient",
+      "severity": "CRITICAL",
+      "description": "BP measurement protocol is not described with sufficient operational detail; automated vs manual, attended vs unattended procedures are not fully standardised or clearly documented.",
+      "recommendation": "Add explicit BP measurement protocol including device type, calibration, number of readings, rest period, attended vs unattended conditions, and site training requirements.",
+      "actual_outcome": "Post-publication controversy: SPRINT BP values may be systematically lower than routine clinic measurements, complicating translation of the \"120 mmHg\" target to real-world practice."
+    },
+    {
+      "id": "SPRINT-004",
+      "section": "Eligibility – Weight loss",
+      "type": "Unintentional weight loss exclusion operationally vague",
+      "severity": "MAJOR",
+      "description": "Exclusion based on \"unintentional weight loss\" lacks a quantitative definition (e.g. % body weight over time), leaving room for variable site interpretation.",
+      "recommendation": "Define unintentional weight loss with quantitative thresholds (e.g. >5% body weight over 6–12 months) and standardised assessment methods.",
+      "actual_outcome": "Site-to-site variability in interpretation; some at-risk participants may have been included or excluded inconsistently."
+    },
+    {
+      "id": "SPRINT-005",
+      "section": "Endpoints – CKD subgroup",
+      "type": "CKD subgroup endpoint power mismatch",
+      "severity": "MAJOR",
+      "description": "Chronic kidney disease subgroup is of high interest, but event rates and sample size may be insufficient for robust conclusions on renal outcomes.",
+      "recommendation": "Pre-specify realistic renal endpoint analyses with appropriate caution about power; consider extended follow-up or pooled analyses.",
+      "actual_outcome": "Published SPRINT results showed limited power to detect differences in some renal outcomes."
+    },
+    {
+      "id": "SPRINT-006",
+      "section": "MIND Substudy – Consent",
+      "type": "MIND substudy consent and eligibility process ambiguous",
+      "severity": "MINOR",
+      "description": "The process for consent and eligibility in the cognitive substudy (MIND) is not fully integrated with the main protocol text.",
+      "recommendation": "Provide a clear cross-reference and flow diagram showing which participants are eligible and how consent for MIND is obtained.",
+      "actual_outcome": "Primarily affects clarity of substudy processes rather than main trial validity."
+    },
+    {
+      "id": "SPRINT-007",
+      "section": "Adaptive Design",
+      "type": "Adaptive sample size stopping rules not operationalized",
+      "severity": "MAJOR",
+      "description": "Mentions of potential adaptive features or early stopping are not fully formalised into statistical decision rules.",
+      "recommendation": "If adaptive elements are planned, specify formal statistical boundaries and DSMB decision criteria; otherwise, remove ambiguous references.",
+      "actual_outcome": "Ambiguity may confuse interpretation of early stopping decisions and perceived robustness of results."
+    }
+  ]
+}
