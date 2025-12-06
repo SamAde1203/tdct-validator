@@ -1,0 +1,55 @@
+{
+  "trial_id": "ACCORD",
+  "total_findings": 5,
+  "severity_counts": {
+    "MAJOR": 4,
+    "CRITICAL": 1
+  },
+  "findings": [
+    {
+      "id": "ACCORD-001",
+      "section": "Safety and Monitoring",
+      "type": "Hypoglycemia risk stratification",
+      "severity": "CRITICAL",
+      "description": "Intensive glycaemic control arm targets near-normal glucose in a high-risk population (older adults with long-standing Type 2 diabetes and cardiovascular disease) without sufficiently conservative hypoglycaemia risk stratification or exclusion.",
+      "recommendation": "Apply stricter exclusion for severe hypoglycaemia history, advanced frailty, and comorbidities; implement adaptive stopping rules tied to serious hypoglycaemic events.",
+      "actual_outcome": "ACCORD was terminated early due to excess mortality in the intensive arm, with post hoc analyses implicating hypoglycaemia and rapid glucose lowering as potential contributors."
+    },
+    {
+      "id": "ACCORD-002",
+      "section": "Eligibility – Age",
+      "type": "Age eligibility contradiction",
+      "severity": "MAJOR",
+      "description": "Inclusion criteria allow adults ≥40 years with CVD or ≥55 years with additional risk factors, but the risk profile is skewed toward older, highly comorbid patients, increasing vulnerability to intensive treatment harms.",
+      "recommendation": "Clarify age stratification and incorporate upper age limits or frailty assessments to reduce exposure of very high-risk individuals to aggressive glycaemic targets.",
+      "actual_outcome": "Older, comorbid participants may have been disproportionately represented in the intensive arm, contributing to observed harm."
+    },
+    {
+      "id": "ACCORD-003",
+      "section": "Eligibility – Blood Pressure",
+      "type": "BP eligibility logic gap",
+      "severity": "MAJOR",
+      "description": "Hypertension control is a major determinant of cardiovascular outcomes, yet BP eligibility and management algorithms are not tightly standardised across arms.",
+      "recommendation": "Specify clear BP eligibility windows and harmonised BP-management algorithms across treatment strategies to avoid confounding.",
+      "actual_outcome": "Residual confounding by BP control complicates interpretation of treatment effects on cardiovascular endpoints."
+    },
+    {
+      "id": "ACCORD-004",
+      "section": "Dosing – Renal Function",
+      "type": "GFR/creatinine dosing conflict",
+      "severity": "MAJOR",
+      "description": "Creatinine- and eGFR-based dose adjustments for glucose-lowering drugs are not consistently specified or aligned across protocol sections.",
+      "recommendation": "Harmonise renal dosing guidance with up-to-date labelling for all agents used in the trial, and centralise these rules in a single table.",
+      "actual_outcome": "Inconsistent application of renal dosing rules may increase risk of adverse events and introduce heterogeneity in drug exposure."
+    },
+    {
+      "id": "ACCORD-005",
+      "section": "Sample Size and Power",
+      "type": "Sample size shortfall",
+      "severity": "MAJOR",
+      "description": "The achieved sample size and event rates differ from original power assumptions, but the protocol does not fully address how this affects interpretability of primary outcomes under early stopping.",
+      "recommendation": "Include contingency plans for lower-than-expected event rates and early stopping, with clear statistical implications.",
+      "actual_outcome": "Early termination and altered event accrual complicate interpretation of the primary composite outcome."
+    }
+  ]
+}
