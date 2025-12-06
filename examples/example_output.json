@@ -1,0 +1,26 @@
+{
+  "trial_id": "DEMO-001",
+  "total_findings": 2,
+  "severity_counts": {
+    "CRITICAL": 1,
+    "MAJOR": 1
+  },
+  "findings": [
+    {
+      "id": "MEAS-001",
+      "section": "Measurement – Blood Pressure",
+      "type": "BP measurement protocol missing",
+      "severity": "CRITICAL",
+      "description": "BP measurement is not specified. Method, device type, and number of readings are required for reproducible hypertension trials.",
+      "recommendation": "Add explicit BP measurement protocol including procedure, device, number of readings, rest period, and attended/unattended conditions."
+    },
+    {
+      "id": "ENDP-002",
+      "section": "Endpoints – Primary",
+      "type": "Single timepoint may be insufficient",
+      "severity": "MAJOR",
+      "description": "Primary endpoint 'BP reduction at 12 weeks' is specified without clarity on measurement standardisation or repeated measures.",
+      "recommendation": "Define whether endpoint is seated BP mean of multiple readings, and align timepoints with measurement protocol."
+    }
+  ]
+}
