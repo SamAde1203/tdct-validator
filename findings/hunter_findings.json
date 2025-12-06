@@ -1,0 +1,83 @@
+{
+  "trial_id": "HUNTER",
+  "total_findings": 8,
+  "severity_counts": {
+    "MAJOR": 5,
+    "CRITICAL": 2,
+    "MINOR": 1
+  },
+  "findings": [
+    {
+      "id": "HUNTER-001",
+      "section": "Title vs Protocol Body",
+      "type": "Phase designation contradiction",
+      "severity": "MAJOR",
+      "description": "Protocol title states \"PHASE III CLINICAL TRIAL…\" while body text describes a Phase Ib/IIa first-in-human safety study with exploratory efficacy. Phase III implies a large, confirmatory trial powered for definitive efficacy outcomes.",
+      "recommendation": "Correct title to \"Phase Ib/IIa Clinical Trial\" and ensure phase designation is consistent across title, synopsis, and regulatory sections. Align language with early-phase safety-focused design, not with Phase III confirmatory trials.",
+      "actual_outcome": "Would cause regulatory confusion; FDA/EMA reviewers could consider the study misclassified; funding agencies would question scientific rigor."
+    },
+    {
+      "id": "HUNTER-002",
+      "section": "Statistical Considerations (Section 11.0)",
+      "type": "Sample size / power contradiction",
+      "severity": "MAJOR",
+      "description": "Protocol states n=60 (15 per arm) is \"not formally powered\" for efficacy, yet also claims it will detect a clinically meaningful change in HbA1c without providing assumptions, variance, or effect size.",
+      "recommendation": "EITHER (1) Perform formal power calculation and specify assumptions, or (2) remove claims of detecting a \"clinically meaningful\" effect and explicitly state the trial is exploratory for efficacy signal and make safety the sole primary endpoint.",
+      "actual_outcome": "Reviewers would question study validity and interpretability; journal editors would reject for inadequate statistical rigor."
+    },
+    {
+      "id": "HUNTER-003",
+      "section": "Exclusion Criteria (Section 7.2)",
+      "type": "Missing hypoglycemia exclusion",
+      "severity": "CRITICAL",
+      "description": "No explicit exclusion for history of severe hypoglycaemia in the prior 12–24 months in a trial testing a glucose-lowering botanical in adults with Type 2 diabetes.",
+      "recommendation": "Add explicit exclusion for \"severe hypoglycaemia within the last 24 months\" (or 12 months if justified), consistent with hypoglycaemia risk stratification used in ACCORD.",
+      "actual_outcome": "If not corrected, increased risk of serious hypoglycaemic events in a small, first-in-human sample; ethics committees and DSMB would likely demand amendment."
+    },
+    {
+      "id": "HUNTER-004",
+      "section": "Inclusion Criteria (Section 7.1)",
+      "type": "Treatment-naive definition conflict",
+      "severity": "MAJOR",
+      "description": "Protocol defines participants as \"treatment-naive\" but also allows prior metformin exposure up to 3 months with washout. This creates ambiguity in baseline treatment history.",
+      "recommendation": "Clarify whether truly treatment-naive patients are required or whether short prior metformin use is permitted. Align language in inclusion criteria, synopsis, and statistical analysis plan.",
+      "actual_outcome": "Heterogeneous baseline treatment exposure would complicate interpretation of safety and glycaemic effects."
+    },
+    {
+      "id": "HUNTER-005",
+      "section": "Interventions (Section 8.0)",
+      "type": "Dose escalation safety protocol missing",
+      "severity": "CRITICAL",
+      "description": "Multi-level dose escalation (500, 1000, 1500 mg BID) is specified without explicit stopping rules or clear criteria for halting escalation in case of toxicity.",
+      "recommendation": "Add a formal dose-escalation algorithm including cohort-wise review, predefined stopping boundaries, and DSMB oversight, similar to oncology Phase I designs.",
+      "actual_outcome": "Without clear rules, investigators could continue escalation despite emerging toxicity, increasing participant risk and regulatory concern."
+    },
+    {
+      "id": "HUNTER-006",
+      "section": "Interventions (Section 8.0)",
+      "type": "Intervention standardization insufficient",
+      "severity": "MAJOR",
+      "description": "Hunteria extract standardisation is described only qualitatively (e.g. \"standardised to active alkaloids\") without specifying batch-to-batch assay limits or named reference compound.",
+      "recommendation": "Define quantitative standardisation parameters (e.g. % content of specific marker compound with acceptable range) and describe batch release testing.",
+      "actual_outcome": "Inconsistent product potency could reduce interpretability of both safety and exploratory efficacy findings."
+    },
+    {
+      "id": "HUNTER-007",
+      "section": "Assessments (Section 9.0)",
+      "type": "HbA1c measurement timing suboptimal",
+      "severity": "MAJOR",
+      "description": "Primary safety and exploratory efficacy endpoints are assessed at 12 weeks, but HbA1c reflects ~3-month glycaemic history; early timepoints may not capture full effect.",
+      "recommendation": "Add a 24-week HbA1c assessment or justify 12-week primary timepoint with prior data on expected onset of effect.",
+      "actual_outcome": "Short follow-up could under-estimate effect size or mischaracterise trajectory of glycaemic response."
+    },
+    {
+      "id": "HUNTER-008",
+      "section": "Eligibility / Renal Function",
+      "type": "eGFR threshold may limit generalizability",
+      "severity": "MINOR",
+      "description": "Excludes participants with eGFR < 60 mL/min/1.73m², which is stricter than many diabetes trials and may unnecessarily limit inclusion of stable CKD stage 3 participants.",
+      "recommendation": "Consider allowing eGFR down to 45 mL/min/1.73m² (with appropriate monitoring) to improve external validity while maintaining safety.",
+      "actual_outcome": "Primarily affects generalisability rather than internal validity; may slow recruitment if real-world population has higher CKD prevalence."
+    }
+  ]
+}
