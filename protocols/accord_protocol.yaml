@@ -1,0 +1,76 @@
+# ACCORD – Action to Control Cardiovascular Risk in Diabetes
+# Simplified illustrative protocol YAML for TDCT
+
+trial_id: NCT00000620
+name: "Action to Control Cardiovascular Risk in Diabetes (ACCORD)"
+indication: "Type 2 diabetes with cardiovascular risk factors"
+sample_size: 10251
+
+population:
+  age_min: 40
+  age_max: 79
+  treatment_naive: false
+
+eligibility:
+  inclusions:
+    - t2d_duration_10y_mean
+    - cvd_risk_factors
+  exclusions:
+    - severe_hypoglycemia_12m      # 12-month window only (SAF-HYPO will fire)
+    - recent_mi_6m
+    - recent_stroke_6m
+  gfr_band:
+    min: 30
+    max: 50
+  creatinine_max_mg_dl: 1.5        # conflicts with GFR band for fenofibrate dosing
+
+intervention:
+  investigational_product: "Intensive vs standard glucose, BP, lipid strategies"
+  is_first_in_human: false
+  glucose_lowering: true
+  intensive_target: true
+  mechanism: "Multimodal cardiometabolic intervention"
+
+endpoints:
+  primary: "Composite CVD event"
+  secondary:
+    - "All-cause mortality"
+    - "Non-fatal MI"
+    - "Stroke"
+  exploratory:
+    - "Microvascular complications"
+  all:
+    - "Composite CVD event"
+    - "All-cause mortality"
+    - "HbA1c"
+  timepoints_weeks:
+    hba1c: 24
+
+measurement:
+  bp:
+    method: "standard_clinic_manual"
+    unattended: false
+    rest_minutes: 5
+  biomarkers:
+    - name: "LDL cholesterol"
+      assay_method: "Enzymatic colorimetric assay"
+      laboratory_standard: "Central core lab certified"
+
+statistics:
+  powered_for: "Composite CVD event"
+  claims_not_powered_for_efficacy: false
+  subgroup_analyses:
+    - "age_65_plus"
+    - "sex"
+    - "baseline_hba1c"
+  subgroup_power:
+    age_65_plus:
+      power: 0.7
+    # NOTE: sex and baseline_hba1c missing -> END-SUB will fire
+  adaptive_language: false
+
+regulatory:
+  declared_phase: "Phase III"
+  inferred_phase: "Phase III"
+
+substudies: {}
