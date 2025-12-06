@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: "TDCT – Trial Design Consistency Testing"
+message: "If you use TDCT in your research, teaching, or clinical trial design work, please cite this project."
+
+authors:
+  - family-names: Adeyemi
+    given-names: Sam
+    email: samoadeyemi@yahoo.co.uk
+    affiliation: "Independent Researcher, United Kingdom"
+
+version: "1.0.0"
+doi: "10.5281/zenodo.xxxxxxx"   # Insert real Zenodo DOI when minted
+date-released: "2025-05-27"
+license: "MIT"
+
+keywords:
+  - clinical trials
+  - protocol validation
+  - trial methodology
+  - automated validation
+  - TDCT
+  - reproducibility
+  - safety analysis
+  - protocol design
+
+repository-code: "https://github.com/<YOUR_USERNAME>/tdct-validator"
