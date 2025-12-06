@@ -1,0 +1,176 @@
+# protocol_schema.yaml
+# TDCT – Trial Design Consistency Testing
+# Canonical schema for trial protocol YAML files
+
+schema_version: "1.0.0"
+
+meta:
+  trial_id: "HUNTER"
+  title: "Phase Ib/IIa Study of Hunteria umbellata in Early Type 2 Diabetes"
+  acronym: "HUNTER"
+  sponsor: "Example Sponsor Ltd."
+  phase: "Ib/IIa"          # e.g. I, Ib/IIa, II, III, IV
+  indication: "Type 2 diabetes"
+  registration_id: "NCT01234567"   # ClinicalTrials.gov or other registry
+  design:
+    type: "randomised_parallel"    # e.g. randomised_parallel, single_arm, crossover
+    allocation_ratio: "1:1"
+    blinding: "double_blind"       # e.g. open_label, single_blind, double_blind
+  sample_size:
+    planned_total: 60
+    planned_per_arm:
+      - arm_id: "A"
+        n: 30
+      - arm_id: "B"
+        n: 30
+  duration:
+    recruitment_months: 12
+    follow_up_months: 24
+
+population:
+  age_min: 30
+  age_max: 75
+  sex: "all"                # male, female, all
+  condition: "Early Type 2 diabetes"
+  setting: "outpatient"
+
+eligibility:
+  inclusion:
+    - "Diagnosed Type 2 diabetes < 5 years"
+    - "HbA1c between 7.0 and 9.5%"
+  exclusion:
+    - "Severe hypoglycaemia within past 12 months"
+    - "eGFR < 45 mL/min/1.73m2"
+    - "Uncontrolled hypertension (SBP ≥ 180 mmHg or DBP ≥ 110 mmHg)"
+  special_populations:
+    frail_elderly_allowed: false
+    pregnancy_allowed: false
+    ckd_stage_allowed:
+      - "G1"
+      - "G2"
+      - "G3a"
+
+intervention:
+  arms:
+    - arm_id: "A"
+      name: "Hunteria extract"
+      type: "investigational_product"
+      route: "oral"
+      doses:
+        - level_id: 1
+          dose: "500 mg"
+          frequency: "twice_daily"
+        - level_id: 2
+          dose: "1000 mg"
+          frequency: "twice_daily"
+      titration_rules:
+        escalation_allowed: true
+        stopping_criteria:
+          - "Grade 3 drug-related AE"
+          - "Clinically significant hypoglycaemia"
+      glucose_lowering: true   # used by safety validators
+    - arm_id: "B"
+      name: "Placebo"
+      type: "placebo"
+      route: "oral"
+      doses:
+        - level_id: 1
+          dose: "matching placebo"
+          frequency: "twice_daily"
+      glucose_lowering: false
+
+endpoints:
+  primary:
+    name: "Safety and tolerability"
+    type: "safety"
+    timepoint: "24 weeks"
+    analysis:
+      measure: "incidence_of_treatment_emergent_AEs"
+      statistical_model: "descriptive"
+  secondary:
+    - name: "Change in HbA1c"
+      type: "efficacy"
+      timepoint: "24 weeks"
+      analysis:
+        measure: "change_from_baseline"
+        statistical_model: "ANCOVA"
+        power_assumptions:
+          alpha: 0.05
+          power: 0.80
+          effect_size: 0.5
+    - name: "Change in fasting plasma glucose"
+      type: "efficacy"
+      timepoint: "24 weeks"
+  exploratory:
+    - name: "Exploratory biomarker panel"
+      type: "exploratory"
+
+safety:
+  dmc_required: true
+  risk_level: "first_in_human"
+  stopping_rules:
+    trial_level:
+      - "Any death considered possibly related to IP"
+      - "≥ 2 cases of severe hypoglycaemia in same dose cohort"
+    subject_level:
+      - "Grade 3 or higher drug-related AE"
+      - "Clinically significant QTc prolongation"
+  adverse_event_collection:
+    start: "first_dose"
+    end: "30_days_after_last_dose"
+  special_risks:
+    hypoglycaemia:
+      monitored: true
+      predefined_thresholds:
+        - "symptomatic BG < 3.0 mmol/L"
+        - "severe_event_requiring_assistance"
+
+measurement:
+  bp_measurement:
+    specified: false          # triggers SPRINT-style validator if false
+    method: null              # e.g. "automated_seated_3_readings_mean"
+    device_type: null
+  glycaemic_measures:
+    hba1c_lab_standardised: true
+    fasting_glucose_method: "venous_plasma"
+  visit_schedule_defined: true
+  central_lab_used: true
+
+randomisation:
+  method: "centralised_IWRS"
+  unit: "participant"
+  stratification_factors:
+    - "site"
+    - "baseline_HbA1c_tertiles"
+  blocking:
+    block_size_randomised: true
+
+visits:
+  schedule:
+    - week: 0
+      visit_type: "screening"
+    - week: 0
+      visit_type: "baseline/randomisation"
+    - week: 4
+      visit_type: "safety_check"
+    - week: 12
+      visit_type: "efficacy_and_safety"
+    - week: 24
+      visit_type: "primary_endpoint"
+
+regulatory:
+  region: "US"
+  ich_gcp_compliant: true
+  ethics_approval_required: true
+  trial_classification:
+    ctimp: true
+    device_trial: false
+    observational: false
+
+metadata_tdct:
+  created_by: "Sam Adeyemi"
+  created_on: "2025-05-01"
+  notes: >
+    This file conforms to the TDCT protocol schema v1.0.0.
+    Fields may be extended, but existing keys should not be repurposed
+    to preserve validator compatibility.
